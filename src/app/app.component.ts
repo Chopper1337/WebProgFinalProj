@@ -16,7 +16,7 @@ export class AppComponent {
    
   constructor(private _vtApiService:VtApiService){}
   
-  getURLScanReport(WebsiteURL) : boolean{
+  getURLScanReport(WebsiteURL:string): boolean{
     this._vtApiService.scanURL(WebsiteURL).subscribe(
      websiteData => {
         this.websiteData=websiteData;

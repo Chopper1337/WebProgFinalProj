@@ -14,7 +14,7 @@ export class VtApiService {
   constructor(private _http:HttpClient) { }
   
   // This is take the users inputted URL as a string, converts it to base64 and makes the API request to the 
-  scanURL(string:URL): Observable<VTAPIResponse>{
+  scanURL(URL:string): Observable<VTAPIResponse>{
     /*
     console.log(Buffer.from("Hello World").toString('base64'));
     // SGVsbG8gV29ybGQ=
@@ -31,9 +31,11 @@ export class VtApiService {
   const requestOptions = {                                                                                                                                                                                 
     headers: new HttpHeaders(customHeaders), 
   }
+  
+  const base64URL = Buffer.from(URL).toString('base64')
 
 // Need to add the "x-ApiKey" header (idk how yet)
-  return this._http.get<VTAPIResponse>(this._siteURL + Buffer.from(URL).toString('base64'), requestOptions)
+  return this._http.get<VTAPIResponse>(this._siteURL + base64URL, requestOptions)
     .pipe(
       tap(data => console.log('VTAPIError: ' + JSON.stringify(data)))
     )
