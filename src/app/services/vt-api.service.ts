@@ -14,30 +14,25 @@ export class VtApiService {
   constructor(private _http:HttpClient) { }
   
   // This is take the users inputted URL as a string, converts it to base64 and makes the API request to the 
-  scanURL(URL:string): Observable<VTAPIResponse>{
-    /*
-    console.log(Buffer.from("Hello World").toString('base64'));
-    // SGVsbG8gV29ybGQ=
-    console.log(Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('binary'))
-    // Hello World
-*/
-  const customHeaders = {
+  scanURL(URL:string): Observable<VTAPIResponse>
+  {
+    const customHeaders = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'x-Apikey': this._ApiKey
-  }
+    'x-Apikey': this._ApiKey}
 
-  const requestOptions = {                                                                                                                                                                                 
-    headers: new HttpHeaders(customHeaders), 
-  }
+    const requestOptions = { headers: new HttpHeaders(customHeaders)}
   
-  const base64URL = Buffer.from(URL).toString('base64')
+    // VT saves website reports under a B64 encoded version of the URL
+    let base64URL = Buffer.from(URL).toString('base64')
 
-// Need to add the "x-ApiKey" header (idk how yet)
-  return this._http.get<VTAPIResponse>(this._siteURL + base64URL, requestOptions)
-    .pipe(
-      tap(data => console.log('VTAPIError: ' + JSON.stringify(data)))
-    )
+    // I expect the maxiumum number of "=" to be two
+    // they need to be removed before being passed to the API
+    base64URL = base64URL.replace(new RegExp('='), "")
+    base64URL = base64URL.replace(new RegExp('='), "")
+
+    return this._http.get<VTAPIResponse>(this._siteURL + base64URL, requestOptions)
+      .pipe(tap(data => console.log('VTAPIError: ' + JSON.stringify(data))))
   }
 }

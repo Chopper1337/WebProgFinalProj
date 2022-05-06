@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { VtApiService } from 'src/app/services/vt-api.service';
+import { IWeb } from '../interface/website';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-website',
   templateUrl: './website.component.html',
-  styleUrls: ['./website.component.css']
+  styleUrls: ['./website.component.css'],
+  providers: [VtApiService]
 })
-export class WebsiteComponent implements OnInit {
 
-  constructor() { }
+export class WebsiteComponent implements OnInit {
+  @Input() websiteData!:IWeb;
+  constructor(private _VtApiService:VtApiService) { }
 
   ngOnInit(): void {
   }

@@ -1,19 +1,29 @@
-<div class="container">
-    <div class="row border">
-        <div class="col-3">
-            <!-- Title -->
-        </div>
-        <div class="col-3">
-            <!-- URL -->
-        </div>
-        <div class="col-2">
-            <!-- Last scan -->
-        </div>
-        <div class="col-4">
-            <!-- favicon -->
-        </div>
-        <div class = "col-2">
-            <!-- controls -->
-        </div>
+<div class="container py-3">
+  <div class="card mb-3">
+   <div class="row g-0">
+    <div class="col-md-4">
+      <img class="img-fluid rounded-start" alt="Website favicon"> <!-- Website favicon was supposed to go here but the free VT API doesn't have that option -->
     </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h2 class="card-title">{{websiteData.title}}</h2>
+        <hr>
+        <p class="card-text">URL: {{websiteData.url}}</p>
+        <p class="card-text">Reputation rating: {{websiteData.reputation}}</p>
+        <hr>
+        <h5 class="card-text">Last scan ratings:</h5>
+      <!--
+        <p class="card-text">Harmless: {{websiteData.last_analysis_stats.harmless}}</p>
+        <p class="card-text">Malicious: {{websiteData.last_analysis_stats.malicious}}</p>
+        <p class="card-text">Suspicious: {{websiteData.last_analysis_stats.suspicious}}</p>
+        <p class="card-text">Undetected: {{websiteData.last_analysis_stats.undetected}}</p>
+        <p class="card-text">Timeout: {{websiteData.last_analysis_stats.timeout}}</p>
+        <p class="card-text"><small class="text-muted">{{websiteData.data.date:'dd-MM-yyyy HH:mm:ss'}}</small></p>
+          <button class="btn btn-primary" (click)="getURLScanReport(URL.value)" type="submit">Add to favourites</button>
+      <button class="btn btn-danger mx-2" (click)="getURLScanReport(URL.value)" type="submit">Remove from favourites</button>
+      -->
+      </div>
+    </div>
+  </div>
+</div>
 </div>
