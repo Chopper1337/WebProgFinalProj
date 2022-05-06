@@ -1,12 +1,18 @@
-import {IWeb} from "./interface/website"
-
 export interface VTAPIResponse {
     data:IData
 }
 
 interface IData{
    attributes:IWeb;
-   last_analysis_stats:last_analysis_stats
+   id:string;
+}
+
+export interface IWeb {
+    title:string;
+    url:string;
+    reputation:string;
+    last_analysis_stats:last_analysis_stats;
+    last_submission_date:string;
 }
 
 interface last_analysis_stats{

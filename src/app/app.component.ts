@@ -33,17 +33,12 @@ export class AppComponent {
   
   addToFavourites(title:string, url:string, reputation:string, last_analysis_stats:last_analysis_stats, last_submission_date:string):boolean{
     let tempWebsite: IWeb
-    let stats:last_analysis_stats={
-      harmless: '',
-      malicious: '',
-      suspicious: '',
-      undetected: '',
-      timeout: '',
-    };
+    let stats!:last_analysis_stats;
     tempWebsite = ({
       title:title,url:url,reputation:reputation,last_analysis_stats:stats,last_submission_date:last_submission_date}
       );
     this._websiteDBAPIService.addWebsiteData(tempWebsite)
     return false;
   }
+  
 }

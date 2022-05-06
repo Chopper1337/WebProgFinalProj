@@ -29,6 +29,10 @@ export class WebsiteDbApiService {
   addWebsiteData(website:IWeb): void {
     this.websitesDataCollection.add(JSON.parse(JSON.stringify(website)));
   }
+
+  deleteFromFavourites(id:string):void{
+    this.websitesDataCollection.doc(id).delete();
+  }
   
   private handleError(err:HttpErrorResponse) {
     console.log('WebsiteApiService: ' + err.message);

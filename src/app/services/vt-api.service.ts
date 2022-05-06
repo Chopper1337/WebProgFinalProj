@@ -19,7 +19,7 @@ export class VtApiService {
     const customHeaders = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    //'Access-Control-Allow-Headers': 'Content-Type',
     'x-Apikey': this._ApiKey}
 
     const requestOptions = { headers: new HttpHeaders(customHeaders)}
