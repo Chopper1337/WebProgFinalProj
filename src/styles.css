@@ -14,3 +14,14 @@ h1,h2,h3,h4,h5,p,a{
 #pageTitle{
     text-align: center;
 }
+
+#websiteCard{
+    width: 70em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#scanBTN{
+    margin-left: 45%;
+    margin-right: 45%;
+}
